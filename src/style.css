@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Love+Light&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+  font-family:"Montserrat",sans-serif!important;
+}
+
+/* Responsive Navbar Styles */
+.navbar {
+  /* background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); */
+
+  /* backdrop-filter: blur(10px); */
+  border-bottom: 1px solid rgba(185, 28, 28, 0.1);
+}
+
+/* Mobile Menu Styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100vh;
+  background: linear-gradient(5deg, maroon 0%, #f9f9e5 100%);
+  border-right: 1px solid rgba(185, 28, 28, 0.1);
+  box-shadow: 2px 0 25px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-menu.active {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 30;
+}
+
+.mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Smooth transitions for mobile menu button */
+#mobileMenuBtn {
+  transition: all 0.2s ease;
+}
+
+#mobileMenuBtn:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .navbar .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .brand-name {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 1.25rem;
+  }
+  
+  .navbar .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Parallax Carousel Styles */
+.parallax-carousel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out, transform 0.8s ease-out;
+  transform: scale(1.1);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: transform 2s ease-out;
+  transform: translateX(-10%) translateY(-10%);
+}
+
+.slide.active .slide-bg {
+  transform: translateX(0%) translateY(0%);
+}
+
+.slide-content {
+  position: absolute;
+  bottom: -0.8rem;
+  left: 5rem;
+  z-index: 10;
+  max-width: 400px;
+  background:#f9f9e5;
+  backdrop-filter: blur(10px);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 1.2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #7f1d1d;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.4s ease-out;
+}
+
+.slide.active .slide-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-content h2 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.7rem;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.4s ease-out 0.3s;
+}
+
+.slide-content p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.4s ease-out 0.6s;
+}
+
+.slide-content .btn {
+  background: linear-gradient(135deg, #fbfbcd 0%, #7f1d1d 100%);
+  color: white;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s ease-out 0.9s, background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.slide-content .btn.visit-us:hover {
+  background: linear-gradient(135deg, #7f1d1d 0%, #fbfbcd 100%);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.slide-content .btn:not(.visit-us):hover {
+  background: linear-gradient(135deg, #fbfbcd 0%, #7f1d1d 100%);
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.slide.active .slide-content h2,
+.slide.active .slide-content p,
+.slide.active .slide-content .btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Floating Elements Animation */
+.floating-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-element {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-element:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 8s;
+}
+
+.floating-element:nth-child(2) {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+  animation-duration: 6s;
+}
+
+.floating-element:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+  animation-duration: 10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Navigation Controls */
+.navigation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.navigation:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.nav-prev {
+  left: 2rem;
+}
+
+.nav-next {
+  right: 2rem;
+}
+
+/* Indicators */
+.indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .slide-content {
+    padding: 1rem;
+    bottom: 1rem;
+  left: 5rem;
+    max-width: 50%;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .slide-content p {
+    font-size: 1rem;
+  }
+  
+  .navigation {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+  
+  .nav-prev {
+    left: 1rem;
+  }
+  
+  .nav-next {
+    right: 1rem;
+  }
+  
+  .indicators {
+    bottom: 1rem;
+  }
+}
+
+/* Stagger delay for multiple elements */
+.stagger-animation:nth-child(1) { transition-delay: 0.1s; }
+.stagger-animation:nth-child(2) { transition-delay: 0.2s; }
+.stagger-animation:nth-child(3) { transition-delay: 0.3s; }
+.stagger-animation:nth-child(4) { transition-delay: 0.4s; }
+.stagger-animation:nth-child(5) { transition-delay: 0.5s; }
+.stagger-animation:nth-child(6) { transition-delay: 0.6s; }
+
+/* Section Slide Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-up {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.8s ease-out;
+}
+
+.slide-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-animation {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.stagger-animation.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Menu Price Hover Effects */
+.menu-price {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.menu-price:hover {
+  color: #991b1b;
+  transform: scale(1.1);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
